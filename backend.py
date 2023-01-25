@@ -1,7 +1,5 @@
 from flask import Flask, request
 from flask_restful import Resource, Api
-import pandas as pd
-import ast
 
 app = Flask(__name__)
 api = Api(app)
