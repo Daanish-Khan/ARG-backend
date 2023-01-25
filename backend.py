@@ -26,7 +26,7 @@ class Key(Resource):
         doc = doc_ref.get()
 
         if doc.exists:
-            return {'key': args['k'], 'validity': True}, 200
+            return {'key': args['k'], 'validity': True, 'trigger': doc.to_dict()['return']}, 200
         else:
              return {'key': args['k'], 'validity': False}, 200
         
