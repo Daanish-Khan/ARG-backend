@@ -25,6 +25,7 @@ class Key(Resource):
         doc_ref = db.collection('keys').document(args['k'])
         doc = doc_ref.get()
 
+        # Returns key, validity, and what event the key triggers (if valid key)
         if doc.exists:
             return {'key': args['k'], 'validity': True, 'trigger': doc.to_dict()['return']}, 200
         else:
