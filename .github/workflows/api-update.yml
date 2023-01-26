@@ -10,8 +10,6 @@ jobs:
     runs-on: self-hosted
 
     steps:
-    - name: Check ver
-      run: py -v
     - name: Install dependencies
       run: |
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
