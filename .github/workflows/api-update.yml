@@ -14,13 +14,11 @@ jobs:
     
     - name: Copy folders
       run: cp -a /home/minecraft/backend/arg-backend/ARG-backend/cpfiles/. /home/minecraft/backend/arg-backend/ARG-backend/ARG-backend
-    - name: Enter venv
-      run: source /home/minecraft/backend/arg-backend/ARG-backend/ARG-backend/backend/bin/activate
+
     - name: Install dependencies
       run: |
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-    - name: Deactivate venv
-      run: deactivate
+
     - name: Restart service
       run: sudo systemctl restart arg-backend
 
