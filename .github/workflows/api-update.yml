@@ -10,6 +10,8 @@ jobs:
     runs-on: self-hosted
 
     steps:
+    - uses: actions/checkout@v3
+    
     - name: Enter venv
       run: python3 -m venv backend
     - name: Install dependencies
