@@ -29,7 +29,7 @@ class Key(Resource):
         if doc.exists:
             return {'key': args['k'], 'validity': True, 'trigger': doc.to_dict()['return']}, 200
         else:
-             return {'key': args['k'], 'validity': False}, 200
+             return {'key': args['k'], 'validity': False, 'testywesty': True}, 200
         
     pass
 
