@@ -10,11 +10,15 @@ jobs:
     runs-on: self-hosted
 
     steps:
-    - name: Enter venv
-      run: python3 -m venv backend
+    - uses: actions/checkout@v3
+    
+    - name: Copy folders
+      run: cp -a /home/minecraft/backend/arg-backend/ARG-backend/cpfiles/. /home/minecraft/backend/arg-backend/ARG-backend/ARG-backend
+
     - name: Install dependencies
       run: |
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
     - name: Restart service
       run: sudo systemctl restart arg-backend
 
