@@ -27,9 +27,9 @@ class Key(Resource):
 
         # Returns key, validity, and what event the key triggers (if valid key)
         if doc.exists:
-            return {'key': args['k'], 'validity': True, 'trigger': doc.to_dict()['return']}, 200
+            return {'key': args['k'], 'valid': True, 'trigger': doc.to_dict()['return']}, 200
         else:
-             return {'key': args['k'], 'validity': False}, 200
+             return {'key': args['k'], 'valid': False}, 200
         
     pass
 
