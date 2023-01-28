@@ -8,7 +8,7 @@ import os
 # Init flask
 app = Flask(__name__)
 api = Api(app)
-CORS(app)
+CORS(app, allow_headers=["Access-Control-Allow-Credentials"])
 
 # Firestore auth ---- CREDS INCLUDED IN GITIGNORE ---- DO NOT UPLOAD TO BRANCH 
 cred_path = os.getcwd() + '/creds.json'
@@ -20,7 +20,7 @@ db = firestore.client()
 
 # Key validation
 class Key(Resource):
-    @cross_origin
+
     def get(self):
         args = request.args
 
@@ -30,13 +30,9 @@ class Key(Resource):
 
         # Returns key, validity, and what event the key triggers (if valid key)
         if doc.exists:
-            resp = Flask.jsonify({'key': args['k'], 'valid': True, 'trigger': doc.to_dict()['return']})
-            resp.headers.add('Access-Control-Allow-Origin', '*')
-            return resp
+            return {'key': args['k'], 'valid': True, 'trigger': doc.to_dict()['return']}, 200
         else:
-            resp = Flask.jsonify({'key': args['k'], 'valid': False})
-            resp.headers.add('Access-Control-Allow-Origin', '*')
-            return resp
+             return {'key': args['k'], 'valid': False}, 200
         
     pass
 
