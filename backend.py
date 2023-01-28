@@ -30,9 +30,13 @@ class Key(Resource):
 
         # Returns key, validity, and what event the key triggers (if valid key)
         if doc.exists:
-            return {'key': args['k'], 'valid': True, 'trigger': doc.to_dict()['return']}, 200
+            resp = Flask.jsonify({'key': args['k'], 'valid': True, 'trigger': doc.to_dict()['return']})
+            resp.headers.add('Access-Control-Allow-Origin', '*')
+            return resp
         else:
-             return {'key': args['k'], 'valid': False}, 200
+            resp = Flask.jsonify({'key': args['k'], 'valid': False})
+            resp.headers.add('Access-Control-Allow-Origin', '*')
+            return resp
         
     pass
 
