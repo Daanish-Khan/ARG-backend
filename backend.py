@@ -61,4 +61,4 @@ class Event(Resource):
 
 # Add endpoints to api
 api.add_resource(Key, '/key')
-api.add_resource(Key, '/event')
+api.add_resource(Event, '/event')
