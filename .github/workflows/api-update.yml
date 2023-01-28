@@ -14,7 +14,8 @@ jobs:
     
     - name: Copy folders
       run: cp -a /home/minecraft/backend/arg-backend/ARG-backend/cpfiles/. /home/minecraft/backend/arg-backend/ARG-backend/ARG-backend
-
+    - name: Start venv
+      run: source backend/bin/activate
     - name: Install dependencies
       run: |
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
