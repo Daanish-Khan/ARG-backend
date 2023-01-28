@@ -1,4 +1,5 @@
 from flask import Flask, request
+from flask_cors import CORS, cross_origin
 from flask_restful import Resource, Api
 import firebase_admin
 from firebase_admin import firestore, credentials
@@ -7,6 +8,7 @@ import os
 # Init flask
 app = Flask(__name__)
 api = Api(app)
+CORS(app)
 
 # Firestore auth ---- CREDS INCLUDED IN GITIGNORE ---- DO NOT UPLOAD TO BRANCH 
 cred_path = os.getcwd() + '/creds.json'
@@ -18,6 +20,7 @@ db = firestore.client()
 
 # Key validation
 class Key(Resource):
+    @cross_origin
     def get(self):
         args = request.args
 
