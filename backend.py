@@ -85,7 +85,7 @@ class File(Resource):
             imgStr = "fear"
 
         try:
-            return send_file("/img/" + imgStr + ".mc", attachment_filename=imgStr + ".mc")
+            return send_file("/img/" + imgStr + ".mc", download_name=imgStr + ".mc")
         except Exception as e:
             return str(e)
     pass
