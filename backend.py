@@ -1,9 +1,10 @@
-from flask import Flask, request
+from flask import Flask, request, send_file
 from flask_cors import CORS, cross_origin
 from flask_restful import Resource, Api
 import firebase_admin
 from firebase_admin import firestore, credentials
 import os
+from random import randrange
 
 # Init flask
 app = Flask(__name__)
@@ -58,7 +59,38 @@ class Event(Resource):
         event = event_ref.get()
 
         return {'event': event.to_dict()['event']}, 200
+    pass
+
+# File getter
+class File(Resource):
+
+    def get(self):
+        
+        filePick = randrange(1, 8)
+        imgStr = ""
+
+        if filePick == 1:
+            imgStr = "broken"
+        elif filePick == 2:
+            imgStr = "deity"
+        elif filePick == 3:
+            imgStr = "desolation"
+        elif filePick == 4:
+            imgStr = "despair"
+        elif filePick == 5:
+            imgStr = "destruction"
+        elif filePick == 6:
+            imgStr = "emergence"
+        elif filePick == 7:
+            imgStr = "fear"
+
+        try:
+            return send_file("/img/" + imgStr + ".mc", attachment_filename=imgStr + ".mc")
+        except Exception as e:
+            return str(e)
+    pass
 
 # Add endpoints to api
 api.add_resource(Key, '/key')
 api.add_resource(Event, '/event')
+api.add_resource(File, '/file')
