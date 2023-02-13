@@ -9,7 +9,7 @@ from random import randrange
 # Init flask
 app = Flask(__name__)
 api = Api(app)
-CORS(app, allow_headers=["Access-Control-Allow-Credentials"])
+CORS(app, allow_headers=["Access-Control-Allow-Credentials", "Access-Control-Allow-Origin"])
 
 # Firestore auth ---- CREDS INCLUDED IN GITIGNORE ---- DO NOT UPLOAD TO BRANCH 
 cred_path = os.getcwd() + '/creds.json'
