@@ -92,7 +92,7 @@ class File(Resource):
     pass
 
 # Puzzle 7 event
-class Event(Resource):
+class Puzzle(Resource):
     def get(self):
         args = request.args
         if (args['phrase'] == "thetallertheystand"):
@@ -104,4 +104,4 @@ class Event(Resource):
 api.add_resource(Key, '/key')
 api.add_resource(Event, '/event')
 api.add_resource(File, '/file')
-api.add_resource(Event, '/puzzle')
+api.add_resource(Puzzle, '/puzzle')
