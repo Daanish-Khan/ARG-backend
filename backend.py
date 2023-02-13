@@ -65,10 +65,6 @@ class Event(Resource):
 class File(Resource):
 
     def get(self):
-
-        # Get current event
-        event_ref = db.collection('events').document('CURRENTEVENT')
-        event = event_ref.get()
         
         # Downloads a random image
         filePick = randrange(1, 8)
