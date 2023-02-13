@@ -65,7 +65,12 @@ class Event(Resource):
 class File(Resource):
 
     def get(self):
+
+        # Get current event
+        event_ref = db.collection('events').document('CURRENTEVENT')
+        event = event_ref.get()
         
+        # Downloads a random image
         filePick = randrange(1, 8)
         imgStr = ""
 
@@ -90,7 +95,17 @@ class File(Resource):
             return str(e)
     pass
 
+# Puzzle 7 event
+class Event(Resource):
+    def get(self):
+        args = request.args
+        if (args['phrase'] == "thetallertheystand"):
+            return {'key': "RATINACAGE"}, 200
+        else:
+            return {'err': "INVALIDPHRASE"}, 200
+
 # Add endpoints to api
 api.add_resource(Key, '/key')
 api.add_resource(Event, '/event')
 api.add_resource(File, '/file')
+api.add_resource(Event, '/puzzle')
