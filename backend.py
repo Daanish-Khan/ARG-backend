@@ -33,12 +33,12 @@ class Key(Resource):
         event_ref = db.collection('events').document('CURRENTEVENT')
         event = event_ref.get()
 
-        # Check if key to event matches active event
-        if event.to_dict()['event'] != key.to_dict()['event']:
-            return {'key': args['k'], 'valid': False}, 200
-
         # Returns key, validity, and what event the key triggers (if valid key)
         if key.exists:
+
+            # Check if key to event matches active event
+            if event.to_dict()['event'] != key.to_dict()['event']:
+                return {'key': args['k'], 'valid': False}, 200
 
             # Update current event
             event_ref.update({u'event': event.to_dict()['event'] + 1})
