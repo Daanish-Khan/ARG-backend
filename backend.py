@@ -100,8 +100,16 @@ class Puzzle(Resource):
         else:
             return {'err': "INVALIDPHRASE"}, 200
 
+class Puzzle9(Resource):
+    def get(self):
+        try:
+            return send_file("./img/puzzle.png")
+        except Exception as e:
+            return str(e)
+
 # Add endpoints to api
 api.add_resource(Key, '/key')
 api.add_resource(Event, '/event')
 api.add_resource(File, '/file')
 api.add_resource(Puzzle, '/puzzle')
+api.add_resource(Puzzle9, '/9')
