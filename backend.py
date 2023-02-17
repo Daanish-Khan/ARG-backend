@@ -99,7 +99,7 @@ class File(Resource):
 class Puzzle(Resource):
     def get(self):
         args = request.args
-        if (args['phrase'] == "thetallertheystand"):
+        if (args['phrase'].lower() == "thetallertheystand"):
             return {'key': "RATINACAGE"}, 200
         else:
             return {'err': "INVALIDPHRASE"}, 200
