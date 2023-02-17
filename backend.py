@@ -67,7 +67,7 @@ class File(Resource):
     def get(self):
         
         # Downloads a random image
-        filePick = randrange(1, 8)
+        filePick = randrange(1, 10)
         imgStr = ""
 
         if filePick == 1:
@@ -84,6 +84,10 @@ class File(Resource):
             imgStr = "emergence"
         elif filePick == 7:
             imgStr = "fear"
+        elif filePick == 8:
+            imgStr = "seal"
+        elif filePick == 9:
+            imgStr = "wrath"
 
         try:
             return send_file("./img/" + imgStr + ".mc", download_name=imgStr + ".mc")
